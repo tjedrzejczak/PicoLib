@@ -13,6 +13,7 @@ class I2CPort
 public:
     I2CPort(i2c_inst_t *channel, uint baudrate, uint gpioSDA, uint gpioSCL);
     void Init();
+    void WriteByte(uint8_t address, uint8_t byte);
     int WriteBlocking(uint8_t address, const uint8_t *src, size_t len, bool nostop);
     int ReadBlocking(uint8_t address, uint8_t *dst, size_t len, bool nostop);
 

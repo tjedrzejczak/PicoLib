@@ -24,6 +24,11 @@ void I2CPort::Init()
     gpio_pull_up(_gpioSCL);
 }
 
+void I2CPort::WriteByte(uint8_t address, uint8_t byte)
+{
+    i2c_write_blocking(_channel, address, &byte, 1, false);
+}
+
 int I2CPort::WriteBlocking(uint8_t address, const uint8_t *src, size_t len, bool nostop)
 {
     return i2c_write_blocking(_channel, address, src, len, nostop);
